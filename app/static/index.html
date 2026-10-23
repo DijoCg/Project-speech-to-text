@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#101827" />
+    <title>VoxNote — Speech to Text</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="/"
+          ><span class="brand-mark">V</span
+          ><span>VoxNote <small>Speech workspace</small></span></a
+        ><span class="status"><i></i> API connected</span>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow">REAL-TIME TRANSCRIPTION</p>
+          <h1>Your voice,<br /><span>captured clearly.</span></h1>
+          <p class="sub">
+            Speak naturally, switch languages, and keep every important thought
+            searchable.
+          </p>
+        </section>
+        <section class="workspace">
+          <div class="panel recorder">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">LIVE SESSION</p>
+                <h2>Speech studio</h2>
+              </div>
+              <span id="liveBadge" class="badge">Ready</span>
+            </div>
+            <label for="language">Recognition language</label>
+            <select id="language">
+              <option value="en-IN">English (India)</option>
+              <option value="hi-IN">Hindi</option>
+              <option value="ml-IN">Malayalam</option>
+              <option value="ta-IN">Tamil</option>
+              <option value="te-IN">Telugu</option>
+              <option value="en-US">English (US)</option>
+              <option value="en-GB">English (UK)</option>
+              <option value="bn-IN">Bengali</option>
+              <option value="mr-IN">Marathi</option>
+              <option value="kn-IN">Kannada</option>
+            </select>
+            <div class="mic-area">
+              <div id="micHalo" class="mic-halo">
+                <button
+                  id="recordBtn"
+                  class="mic-button"
+                  aria-label="Start recording"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="9" y="2" width="6" height="13" rx="3"></rect>
+                    <path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"></path>
+                  </svg>
+                </button>
+              </div>
+              <p id="recordHint">Tap the microphone to start</p>
+              <small>Allow microphone access when prompted</small>
+            </div>
+            <label for="titleInput">Session title</label
+            ><input
+              id="titleInput"
+              maxlength="160"
+              value="Untitled transcription"
+              placeholder="Give this session a title"
+            />
+            <label for="transcript">Transcription</label
+            ><textarea
+              id="transcript"
+              rows="7"
+              placeholder="Your spoken words will appear here…"
+            ></textarea>
+            <div class="actions">
+              <button id="clearBtn" class="btn btn-secondary">Clear text</button
+              ><button id="saveBtn" class="btn btn-primary">
+                Save transcription <span>↗</span>
+              </button>
+            </div>
+            <p id="message" class="message" role="status"></p>
+            <p class="privacy-note">
+              Microphone audio is handled by your browser's speech-recognition
+              provider. This demo saves only the resulting text and session
+              details.
+            </p>
+          </div>
+          <aside class="panel history-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">YOUR LIBRARY</p>
+                <h2>Recent sessions</h2>
+              </div>
+              <span id="count" class="count">0</span>
+            </div>
+            <div class="search-wrap">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16 16 4 4"></path></svg
+              ><input
+                id="searchInput"
+                placeholder="Search transcripts…"
+                aria-label="Search transcripts"
+              />
+            </div>
+            <div id="history" class="history-list">
+              <div class="empty">
+                <b>No sessions yet</b>
+                <p>Your saved transcriptions will appear here.</p>
+              </div>
+            </div>
+            <div class="history-footer">
+              <button id="refreshBtn" class="text-button">Refresh ↻</button>
+            </div>
+          </aside>
+        </section>
+        <footer>VOXNOTE <span>•</span> SPEECH-TO-TEXT DEMO</footer>
+      </main>
+    </div>
+    <dialog id="editDialog">
+      <form method="dialog" id="editForm">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">UPDATE SESSION</p>
+            <h2>Edit transcription</h2>
+          </div>
+          <button class="close-button" value="cancel" aria-label="Close">
+            ×
+          </button>
+        </div>
+        <input id="editId" type="hidden" /><label for="editTitle">Title</label
+        ><input id="editTitle" maxlength="160" /><label for="editText"
+          >Transcription</label
+        ><textarea id="editText" rows="8"></textarea>
+        <div class="actions">
+          <button class="btn btn-secondary" value="cancel">Cancel</button
+          ><button id="updateBtn" class="btn btn-primary" value="default">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
