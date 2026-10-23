@@ -17,6 +17,10 @@ from sqlalchemy.orm import (
     sessionmaker,
 )
 
+from fastapi import FastAPI
+
+app = FastAPI()
+
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = BASE_DIR.parent
