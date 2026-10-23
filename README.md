@@ -18,7 +18,7 @@ Python, FastAPI, SQLAlchemy, HTML, CSS, JavaScript, SQLite, PostgreSQL, Docker, 
 python -m venv .venv
 .venv\Scripts\Activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+python run.py
 ```
 
 Open http://127.0.0.1:8000
